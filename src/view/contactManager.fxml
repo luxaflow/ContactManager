@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+Studentnummer: 800009921
+Naam:          Lucas Wolfe
+Leerlijn:      Object Oriented Programming (OOP)
+Datum:         19/02/2019
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="rootPane" maxHeight="600" maxWidth="600" minHeight="600" minWidth="600" prefHeight="600" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+   <children>
+      <Pane prefHeight="70.0" prefWidth="600.0">
+         <children>
+            <Text layoutX="189.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contacts Manager">
+               <font>
+                  <Font name="Calibri" size="30.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <AnchorPane fx:id="applicationPane" layoutY="70.0" prefHeight="530.0" prefWidth="600.0">
+         <children>
+            <TabPane prefHeight="530.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab fx:id="tab_contacts" onSelectionChanged="#listContacts" text="Contacts">
+                    <AnchorPane prefHeight="484.0" prefWidth="600.0">
+                        <children>
+                           <Pane prefHeight="53.0" prefWidth="600.0">
+                              <children>
+                                 <TextField fx:id="searchTextField" layoutX="14.0" layoutY="14.0" />
+                                 <Button layoutX="173.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#searchContacts" text="Find" />
+                                 <Button layoutX="503.0" layoutY="14.0" mnemonicParsing="false" onAction="#formView" text="Add Contact" />
+                                 <Region layoutX="212.0" layoutY="2.0" prefHeight="51.0" prefWidth="231.0" />
+                              </children>
+                           </Pane>
+                           <TableView fx:id="contactsTableView" layoutY="53.0" prefHeight="394.0" prefWidth="600.0">
+                             <columns>
+                               <TableColumn fx:id="nameTableColumn" prefWidth="150.0" text="Name" />
+                               <TableColumn fx:id="emailTableColumn" onEditCommit="#updateEmail" prefWidth="150.0" text="E-mail" />
+                                 <TableColumn fx:id="phoneTableColumn" onEditCommit="#updatePhone" prefWidth="150.0" text="Phone" />
+                                 <TableColumn fx:id="mobileTableColumn" onEditCommit="#updateMobile" prefWidth="150.0" text="Mobile" />
+                             </columns>
+                           </TableView>
+                           <Button layoutX="535.0" layoutY="462.0" mnemonicParsing="false" onMouseClicked="#deleteContact" text="Delete" />
+                        </children>
+                     </AnchorPane>
+                </Tab>
+                  <Tab onSelectionChanged="#getProfile" text="Profile">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox layoutX="104.0" layoutY="113.0" prefHeight="199.0" prefWidth="108.0" spacing="6.0">
+                                 <children>
+                                    <Label prefHeight="30.0" text="First Name">
+                                       <font>
+                                          <Font name="Calibri Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label graphicTextGap="0.0" layoutX="10.0" layoutY="10.0" prefHeight="30.0" text="Last Name">
+                                       <font>
+                                          <Font name="Calibri Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="34.0" prefHeight="30.0" text="E-mail">
+                                       <font>
+                                          <Font name="Calibri Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="58.0" prefHeight="30.0" text="Phone">
+                                       <font>
+                                          <Font name="Calibri Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="82.0" prefHeight="30.0" text="Mobile">
+                                       <font>
+                                          <Font name="Calibri Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="212.0" layoutY="113.0" prefHeight="275.0" prefWidth="284.0" spacing="6.0">
+                                 <children>
+                                    <TextField fx:id="firstNameTextField" prefHeight="30.0" prefWidth="284.0" />
+                                    <TextField fx:id="lastNameTextField" layoutX="10.0" layoutY="10.0" />
+                                    <TextField fx:id="emailTextField" layoutX="10.0" layoutY="41.0" prefHeight="30.0" />
+                                    <TextField fx:id="phoneTextField" layoutX="10.0" layoutY="72.0" prefHeight="30.0" />
+                                    <TextField fx:id="mobileTextField" layoutX="10.0" layoutY="103.0" prefHeight="30.0" />
+                                    <HBox prefHeight="45.0" prefWidth="284.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" onMouseClicked="#updateProfile" prefHeight="30.0" prefWidth="303.0" text="Save" />
+                                          <Region prefHeight="45.0" prefWidth="20.0" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <Text fx:id="msgText" layoutX="212.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="283.13671875">
+                                 <font>
+                                    <Font name="Calibri" size="15.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
